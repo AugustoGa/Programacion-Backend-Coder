@@ -9,8 +9,7 @@ const UserRouter = Router()
 UserRouter .post('/', passport.authenticate('register', { session: false, failureRedirect : '/api/users/fail-Register'}),  
     async ( req , res ) => {
         try {
-            const newUser = await Users.newUserCart(req.body) 
-            res.status(HTTP_RESPONSES.CREATED).json({ message: "User successfully registered.", payload: newUser });
+            res.status(HTTP_RESPONSES.CREATED).json({ message: "User successfully registered." });
         } catch (error) {
             console.error('Error post UserRouter', error.message)
             res.status(HTTP_RESPONSES.INTERNAL_SERVER_ERROR)

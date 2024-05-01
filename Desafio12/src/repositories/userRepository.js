@@ -29,5 +29,16 @@ class UserRepository {
         }
     }
 
+    async updateUserCart( userId, cartId ) {
+        try {
+            const updatedUser = await this.User.updateUserCart(userId, cartId);
+            console.log('User cart updated:', updatedUser);
+            return updatedUser;
+        } catch (error) {
+            console.error(' Error updateUserCart', error)  
+            throw new Error('Failed to update user cart');
+        }
+    }
+
 }
 module.exports = UserRepository

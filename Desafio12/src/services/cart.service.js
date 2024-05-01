@@ -4,9 +4,11 @@ const Cart = new CartRepository()
 
 const createCart = async () => {
     try {
-        return await Cart.cartCreated()
+        const newCart = await Cart.cartCreated({ products: [] })
+        return newCart._id
     } catch (error) {
-        throw error
+        console.error('Error creating cart:', error);
+        throw new Error('Failed to create cart');
     }
 }
 

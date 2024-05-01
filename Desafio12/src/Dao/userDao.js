@@ -7,8 +7,6 @@ const Cart = new CartDao()
 class UserDao{
     async createdUser( newUserDTO ) {
         try {
-            const newCart = await Cart.cartCreated();
-            newUser.cart = newCart._id
             return await User.create( newUserDTO )
         } catch (error) {
             console.error('Error created User', error)
@@ -29,6 +27,17 @@ class UserDao{
             return await User.findOne( filter )
         } catch (error) {
             console.error(' Error get one User', error)  
+        }
+    }
+
+    async updateUserCart( userId, cartId ) {
+        try {
+            const updatedUser = await User.findByIdAndUpdate(userId, { $set: { carts: cartId } }, { new: true });
+            console.log('User updated:', updatedUser);
+            return updatedUser;
+        } catch (error) {
+            console.error(' Error updateUserCart', error)  
+            throw new Error('Failed to update user cart');
         }
     }
 }

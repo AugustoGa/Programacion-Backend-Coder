@@ -3,8 +3,8 @@ const jwt = require('passport-jwt');
 const LocalStrategy = require('passport-local');
 const GithubStrategy = require('passport-github2');
 const { ghClientId, ghClientSecret } = require('./db.config');
-const { createHash, useValidPassword } = require('../utils/cryp-password.util');
-const { userId, created } = require('../services/user.service');
+const {  useValidPassword } = require('../utils/cryp-password.util');
+const User = require('../services/user.service');
 const newUserDTO = require('../Dto/newUserDto');
 
 
@@ -15,13 +15,13 @@ const initializePassport = () => {
         passReqToCallback: true 
     }, async (req, username, password, done) => {
         try {
-            const existingUser = await userId({ email : username });
+            const existingUser = await User.userId({ email : username });
             if (existingUser) {
                 return done(null, false, { message: 'El correo electrónico ya está en uso' });
             }
-            const newUserInf = await newUserDTO(req.body, password)
-            const newUser = created(newUserInf)
-            return done ( null , false )
+            const newUserInf =  new newUserDTO(req.body, password)
+            const newUser = await User.createUser(newUserInf)
+            return done ( null , newUser )
         } catch (error) {
             return done(error); 
         }
@@ -33,7 +33,7 @@ const initializePassport = () => {
             try {
                 console.log('Intento de inicio de sesión con correo electrónico:', username);
                 console.log('Contraseña proporcionada:', password);
-                const user = await userId({ email: username });
+                const user = await User.userId({ email: username });
                 console.log('Correo electrónico recibido:', username);
                 if (!user) {
                     console.log('Usuario no existe');
@@ -63,7 +63,7 @@ const initializePassport = () => {
     }, async (accessToken, refreshToken, profile, done) => {
         try {
             const { id, login, name, email } = profile._json;
-            const user = await userId({ email: email });
+            const user = await User.userId({ email: email });
             if (!user) {
                 const newUserInfo = {
                     first_name: name,
@@ -71,7 +71,7 @@ const initializePassport = () => {
                     githubId: id,
                     githubUsername: login,
                 };
-                const newUser = await created(newUserInfo);
+                const newUser = await User.createUser(newUserInfo);
                 return done(null, newUser);
             }
             return done(null, user);

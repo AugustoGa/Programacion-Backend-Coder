@@ -1,4 +1,5 @@
-const { createHash } = require('../utils/cryp-password.util')
+const { createHas } = require("../utils/cryp-password.util")
+
 
 class newUserDTO {
     constructor( newUser , password) {
@@ -6,7 +7,8 @@ class newUserDTO {
         this.last_name = newUser.last_name
         this.email = newUser.email
         this.age = newUser.age
-        this.password = createHash (password)
+        this.password = createHas(password)
+        this.role = newUser.role
     }
 }
 module.exports = newUserDTO

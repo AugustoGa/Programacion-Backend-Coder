@@ -7,7 +7,7 @@ class CartRepository {
 
     async cartCreated() {
         try {
-            return await this.Cart.cartCreated()
+            return await this.Cart.cartCreated({ products: [] })
         } catch (error) {
             console.error('Error cartAdd',error);
         }

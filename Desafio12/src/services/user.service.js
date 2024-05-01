@@ -1,12 +1,27 @@
 const UserRepository = require('../repositories/userRepository')
 const { generateToken } = require('../utils/jwt.util')
-const { createCart } = require('./cart.service')
+const Cart = require('./cart.service')
 
 const User = new UserRepository()
 
-const created = async ( newUser ) => {
+const createUser = async ( newUserDTO ) => {
     try {
-        return await User.createdUser( newUser )
+        const existingUser = await userId({ email: newUserDTO.email });
+        if (existingUser) {
+            throw new Error('User with this email already exists');
+        }
+        const newUser = await User.createdUser( newUserDTO )
+        const newCart = await Cart.createCart({ products: [] })
+        const UserCart = await updateUserCart(newUser._id, newCart._id)
+        return UserCart
+    } catch (error) {
+        throw error
+    }
+}
+
+const updateUserCart = async ( uid, cid ) => {
+    try {
+    return await User.updateUserCart(uid, cid)
     } catch (error) {
         throw error
     }
@@ -23,17 +38,6 @@ const userId = async ( filter ) => {
 const allUser = async () => {
     try {
         return await User.getUsers()
-    } catch (error) {
-        throw error
-    }
-}
-
-const newUserCart = async ( userData ) => {
-    try {
-        const newUser = await created(userData)
-        const newCart = await createCart({ products: [] })
-        await updateUserCart(newUser._id, newCart._id)
-        return newUser
     } catch (error) {
         throw error
     }
@@ -60,25 +64,13 @@ const loginUser = async ( userData ) =>{
     }
 }
 
-const updateUserCart = async (userId, cartId) => {
-    try {
-        const user = await userId(userId);
-        if (!user) {
-            throw new Error('User not found');
-        }
-        user.carts = cartId;
-        await user.save();
-    } catch (error) {
-        throw error;
-    }
-};
+
 
 
 module.exports = {
-    created,
+    createUser,
     allUser,
     userId,
-    newUserCart,
     loginUser,
     updateUserCart
 }
