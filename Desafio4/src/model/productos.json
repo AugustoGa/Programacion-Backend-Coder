@@ -1,0 +1,105 @@
+[
+  {
+    "title": "Producto 1 Actualizado",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img1_updated.jpg",
+    "code": "P1",
+    "stock": 40,
+    "id": 1
+  },
+  {
+    "title": "Producto 2 ",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img2.jpg",
+    "code": "P2",
+    "stock": 40,
+    "id": 2
+  },
+  {
+    "title": "Producto 3",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img3.jpg",
+    "code": "P3",
+    "stock": 40,
+    "id": 3
+  },
+  {
+    "title": "Producto 4",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img4",
+    "code": "P4",
+    "stock": 40,
+    "id": 4
+  },
+  {
+    "title": "Producto 5",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img5.jpg",
+    "code": "P5",
+    "stock": 40,
+    "id": 5
+  },
+  {
+    "title": "Producto 6",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img6.jpg",
+    "code": "P6",
+    "stock": 40,
+    "id": 6
+  },
+  {
+    "title": "Producto 7",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img7.jpg",
+    "code": "P7",
+    "stock": 40,
+    "id": 7
+  },
+  {
+    "title": "Producto 8",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img8.jpg",
+    "code": "P8",
+    "stock": 40,
+    "id": 8
+  },
+  {
+    "title": "Producto 9",
+    "description": "Nueva descripción",
+    "price": 25.99,
+    "thumbnail": "/img9.jpg",
+    "code": "P9",
+    "stock": 40,
+    "id": 9
+  },
+  {
+    "title": "New product created with post method",
+    "description": "New Product",
+    "price": 15.55,
+    "thumbnail": "./Img10-Post.jpg",
+    "code": "P10-Post",
+    "category": "New Product",
+    "status": false,
+    "stock": 9,
+    "id": 10
+  },
+  {
+    "title": "New product modified ",
+    "description": "New Product modified  ",
+    "price": 5.55,
+    "thumbnail": "./Img11-Put.jpg",
+    "code": "P11-Put",
+    "category": "New Product modified",
+    "status": true,
+    "stock": 19,
+    "id": 11
+  }
+]

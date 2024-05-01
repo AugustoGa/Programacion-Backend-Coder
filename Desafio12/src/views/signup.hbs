@@ -1,0 +1,41 @@
+<form class="formSignup">
+    <p class="title">Bienvenido</p>
+    <p class="message">Regístrate para realizar compras en nuestra tienda</p>
+    <div class="flex">
+        <label>
+            <input class="input" id="nombre" type="text" placeholder="" required="">
+            <span>Nombre</span>
+        </label>
+        <br>
+        <label>
+            <input class="input" id="apellido" type="text" placeholder="" required="">
+            <span>Apellido</span>
+        </label>
+    </div>
+    <label>
+        <input class="input" id="edad" type="number" placeholder="" required="">
+        <span>Edad</span>
+    </label>
+    <br>
+    <label>
+        <input class="input" id="email" type="email" placeholder="" required="">
+        <span>Email</span>
+    </label>
+    <br>
+    <label>
+        <input class="input" id="password" type="password" placeholder="" required="">
+        <span>Password</span>
+    </label>
+    <br>
+    <label>
+        <select id="role" class="input" required="">
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+        </select>
+        <span>Rol</span>
+    </label>
+    <button class="submit">Registrarte</button>
+    <p class="signin">¿Ya tienes una cuenta?<a href="/login">Ingresar</a></p>
+</form>
+
+<script src="/js/signup.js"></script>

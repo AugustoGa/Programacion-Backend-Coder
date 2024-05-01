@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "start": "nodemon Product.js"
+  }
+}
+

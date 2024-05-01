@@ -1,0 +1,12 @@
+{
+  "name": "desafio13",
+  "version": "1.0.0",
+  "description": "Desafio13 - Optimización -",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

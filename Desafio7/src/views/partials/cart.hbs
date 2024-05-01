@@ -1,0 +1,18 @@
+
+<div class="container">
+    {{#with filterById}}
+        {{#each products}}
+            <div class="carritoFinal">
+                <picture>
+                    <img src="/img/{{this.product.thumbnail}}" class="imgCarrito" alt="{{this.product.title}}" />
+                </picture>
+                <p class="parrafoCarrito">{{this.product.title}}</p>
+                <p class="parrafoCarrito">${{this.product.price}}</p>
+                <p class="parrafoCarrito">{{this.quantity}}</p>
+                <button class="icono" data-cid="{{../_id}}" data-pid="{{this.product._id}}">
+                </button>
+            </div>
+        {{/each}}
+    {{/with}}
+</div>
+    <h1>HOAAAAAAAAAAAAAA</h1>

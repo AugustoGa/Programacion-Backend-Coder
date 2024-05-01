@@ -1,0 +1,24 @@
+
+    <div class="container">
+    {{#each products}}
+    <div class="card" style="width: 18rem; margin-bottom: 20px;">
+        <img src="/img/{{thumbnail}}" class="card-img-top" alt="{{title}}">
+        <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">COD: {{code}}</p>
+    <p class="card-text">Precio:${{price}} Cantidad:{{stock}}</p>
+    <a href="#" ><button type="button" class="AgregarCarrito btn btn2" data-pid="{{_id}}">Comprar</button></a>
+    </div>
+    </div>
+{{/each}}
+
+    <div>
+        {{#if hasPrevPage}}
+            <a href="/products/?page={{prevPage}}"><button type="button" class="btn btn-secondary">Anterior</button></a>
+        {{/if}}
+
+        {{#if hasNextPage}}
+            <a href="/products/?page={{nextPage}}"><button type="button" class="btn btn-secondary">Siguiente</button></a>
+        {{/if}}
+    </div>
+</div>
