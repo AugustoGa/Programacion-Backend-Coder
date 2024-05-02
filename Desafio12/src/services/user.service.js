@@ -1,6 +1,7 @@
 const UserRepository = require('../repositories/userRepository')
 const { generateToken } = require('../utils/jwt.util')
 const Cart = require('./cart.service')
+const MessageManager = require('../repositories/repository');
 
 const User = new UserRepository()
 
@@ -13,6 +14,7 @@ const createUser = async ( newUserDTO ) => {
         const newUser = await User.createdUser( newUserDTO )
         const newCart = await Cart.createCart({ products: [] })
         const UserCart = await updateUserCart(newUser._id, newCart._id)
+        await MessageManager.sendMessage(UserCart)
         return UserCart
     } catch (error) {
         throw error

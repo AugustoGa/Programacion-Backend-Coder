@@ -25,7 +25,7 @@ AuthRouter.get('/current', (req, res) => {
         const userDTO = new newUserInfDTO(req.user)
         res.json({ message: userDTO })
     } else {
-        res.status(HTTP_RESPONSES.UNAUTHORIZED).json({status: 'error', message: 'User is not authenticated' })
+        res.status(HTTP_RESPONSES.UNAUTHORIZED)
     }
 })
 

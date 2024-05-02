@@ -1,8 +1,7 @@
 const Cart = require('../models/carts.model')
-const ProductDao = require('./productsDao')
+const Product = require('../services/products.service')
 const Tiket = require('../models/tiket.model')
 
-const Product = new ProductDao()
 
 class CartDao{
     async cartCreated() {
@@ -35,7 +34,7 @@ class CartDao{
 
     async getCartById ( id ){
         try {
-            return await Cart.findById( id )
+            return await Cart.findOne({ _id: id}).populate('products.product')
         } catch (error) {
             console.error('Error getCartById',error);
         }
@@ -45,7 +44,7 @@ class CartDao{
         try {
             const cart = await Cart.findById( cid )
             if ( cart ){
-                const product = await Product.getProductById( pid )
+                const product = await Product.productId( pid ) ///product service
                 if ( product ){
                     const productIndex = cart.products.findIndex(
                         (prod) => prod.product.toString() === pid.toString())
@@ -78,7 +77,7 @@ class CartDao{
 
     async updateCart ( id , updateProd) {
         try {
-            const cart = await this.getCartById(id)
+            const cart = await getCartById(id) //llaamr a cart
             if ( !cart ) {
                 console.log('Cart not exist db')
             }
@@ -107,7 +106,7 @@ class CartDao{
 
     async updateProductInCart ( id , pid , newQuantity ) {
         try {
-            const cart = await this.getCartById(id)
+            const cart = await getCartById(id)
             if ( !cart ) {
                 console.log('Cart not exist')
             }
@@ -124,7 +123,7 @@ class CartDao{
 
     async removeProductFromCart ( cid , pid ) {
         try {
-            const cart = await this.getCartById( cid )
+            const cart = await getCartById( cid )
             const mutableProducts = [...cart.products]
             const indexToRemove = mutableProducts.findIndex( prod => prod.product.toString().startsWith( pid ))
             console.log('index of the product to eliminate' , indexToRemove)

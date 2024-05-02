@@ -45,6 +45,15 @@ class CartRepository {
             throw error;
         }
     }
+
+    async addProductInCart(cid , pid) {
+        try {
+            return await this.Cart.addProductInCart(cid , pid);
+        } catch (error) {
+            console.error('Error add product in cart', error);
+            throw error;
+        }
+    }
     
     async updateCart(id, updateProd) {
         try {

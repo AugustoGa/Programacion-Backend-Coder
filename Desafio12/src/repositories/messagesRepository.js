@@ -1,11 +1,11 @@
 class MessageRepository {
-    constructor(adapter) {
-      this.adapter = adapter
-    }
-  
-    async sendMessage(messageInfo) {
-      await this.adapter.sendMessage(messageInfo)
-    }
+  constructor(adapter) {
+    this.adapter = adapter
   }
-  
-  module.exports = MessageRepository
+
+  async sendMessage(messageInfo) {
+    await this.adapter.sendMessage(messageInfo)
+  }
+}
+
+module.exports = MessageRepository

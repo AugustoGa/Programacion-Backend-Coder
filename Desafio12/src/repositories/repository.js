@@ -1,6 +1,9 @@
-const MessageFactory = require('../adapters/factory')
-const MessageRepository = require('./messagesRepository')
+//const  MessageFactory  = require('../adapter/factory');
+const MailAdapter = require('../adapter/mailAdapter')
+const MessageRepository = require('./messagesRepository');
 
-const messageManager = new MessageRepository(new MessageFactory())
+
+const messageManager = new MessageRepository(new MailAdapter())
+//const messageManager = new MessageRepository( MessageFactory)
 
 module.exports = messageManager

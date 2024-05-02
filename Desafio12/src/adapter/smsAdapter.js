@@ -1,4 +1,4 @@
-const { sms } = require('../configs/services.config')
+const { sms } = require('../config/db.config')
 const client = require('../utils/twilio.util')
 
 class SmsAdapter {

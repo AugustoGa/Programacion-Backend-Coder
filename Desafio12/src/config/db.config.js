@@ -11,5 +11,8 @@ module.exports = {
     userEmail: process.env.USER_EMAIL, 
     userPassword: process.env.USER_PASSWORD,
     PortMailer: process.env.PORT_MAILER,
+    twilioSID: process.env.TWILIO_ACCOUNT_SID,
+    twilioTOKEN: process.env.TWILIO_ACCOUNT_TOKEN,
+    twilioNUMBER: process.env.TWILIO_SMS_NUMBER,
     environment: process.env.ENVIRONMENT,
 }

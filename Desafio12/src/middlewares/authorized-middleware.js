@@ -1,10 +1,11 @@
+const HTTP_RESPONSES = require('../contants/http-responses')
 const authorization = role => {
     return (req,res,next) => {
         if (!req.user)
-            return res.status(401).json ({status:'error', error: 'Unauthorized'})
+            return res.status(HTTP_RESPONSES.BAD_REQUEST)
 
         if(req.user.role != role)
-            return res.status(401).json ({status:'error', error: 'forbiden'})
+            return res.status(HTTP_RESPONSES.FORBIDDEN)
         next()
     }
 }

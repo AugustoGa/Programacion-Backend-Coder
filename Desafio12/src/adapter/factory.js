@@ -2,13 +2,13 @@ const { environment } = require('../config/db.config')
 
 switch (environment) {
   case 'dev':
-    console.log('Usando nodemailer')
-    module.exports = require('./mailAdapter')
+    console.log('Vamos a usar nodemailer')
+    module.exports = require('./mail.adapter')
     break
 
   case 'prod':
-    console.log('Usando twilio')
-    module.exports = require('./smsAdapter')
+    console.log('Vamos a usar twilio')
+    module.exports = require('./sms.adapter')
     break
 
   default:

@@ -18,11 +18,12 @@ ProductRouter.get('/' ,publicAcces, async ( req , res ) => {
 })
 
 
+
 ProductRouter.get('/:id' ,publicAcces , async ( req , res ) => {
     try {
         const { id } = req.params
         const product = await Products.productId( id )
-        res.status(HTTP_RESPONSES.OK).json({ playload : product})
+        res.status(HTTP_RESPONSES.OK).render('oneProduct')
         return product
     } catch (error) {
         console.error(error)
@@ -33,7 +34,7 @@ ProductRouter.get('/:id' ,publicAcces , async ( req , res ) => {
 ProductRouter.post('/' ,authorization('admin'), async ( req , res ) => {
     try {
         const newProduct = await Products.createProd(req.body)
-        res.status(HTTP_RESPONSES.CREATED).json({ playload : newProduct })
+        res.status(HTTP_RESPONSES.CREATED).res.render('addProduct')  
         return newProduct
     } catch (error) {
         console.error(error)
@@ -55,7 +56,7 @@ ProductRouter.put('/:id' ,authorization('admin'), async ( req , res ) => {
 ProductRouter.delete('/:id' ,authorization('admin'), async ( req , res ) => {
     try {
         const { id } = req.params
-        const delet = await Products.softDeletes( id )
+        const delet = await Products.softDelete( id )
         res.status(HTTP_RESPONSES.OK).json({ payload :'Product Deleted (Soft Delete)'}, delet)
     } catch (error) {
         console.error(error)
